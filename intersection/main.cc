@@ -5,6 +5,7 @@
 #include <random>
 #include "intersections.h"
 #include "vector2d.h"
+#include "vector3d.h"
 
 void TestLineAndTriangle()
 {
@@ -117,9 +118,19 @@ void TestLineAndLineSegment2D()
   }
 }
 
+template <typename T>
+void TestVector3()
+{
+  vector3d<T> vec1(static_cast<T>(0), static_cast<T>(1), static_cast<T>(2));
+  vector3d<T> vec2(static_cast<T>(0), static_cast<T>(0.3), static_cast<T>(10.2));
+
+  std::cout << vec1 * vec2 << std::endl;
+}
+
 int main()
 {
   /**/ TestLineAndLineSegment2D(); //*/
   /*/ TestLineAndTriangleRandomRepeat(10); //*/
   /*/ TestLineAndTriangle();               //*/
+  /*/ TestVector3<double>(); //*/
 }
