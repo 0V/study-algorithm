@@ -2,7 +2,7 @@
 #include <cmath>
 
 template <typename T>
-class vector3d
+class Vector3d
 {
 private:
   T X;
@@ -11,15 +11,15 @@ private:
 
 public:
   //! Sets all members to zero
-  vector3d();
+  Vector3d();
 
   //! Explicitly converts from one type to another
   template <typename R>
-  explicit vector3d(const vector3d<R> &other);
+  explicit Vector3d(const Vector3d<R> &other);
 
-  vector3d(const T &x, const T &y, const T &z);
+  Vector3d(const T &x, const T &y, const T &z);
 
-  vector3d(const T coords[3]);
+  Vector3d(const T coords[3]);
 
   // Get-Set methods
 
@@ -50,31 +50,31 @@ public:
   // Standard operations
 
   //! This does absolutely nothing, but it should be included for consistency
-  const vector3d operator+() const;
+  const Vector3d operator+() const;
 
-  const vector3d operator+(const vector3d &other) const;
-  vector3d &operator+=(const vector3d &other);
+  const Vector3d operator+(const Vector3d &other) const;
+  Vector3d &operator+=(const Vector3d &other);
 
   //! The same as multiplying *this by -1
-  const vector3d operator-() const;
+  const Vector3d operator-() const;
 
-  const vector3d operator-(const vector3d &other) const;
-  vector3d &operator-=(const vector3d &other);
+  const Vector3d operator-(const Vector3d &other) const;
+  Vector3d &operator-=(const Vector3d &other);
 
   //! Multiplying *this by a scalar
-  const vector3d operator*(const T &scalar) const;
-  vector3d &operator*=(const T &scalar);
+  const Vector3d operator*(const T &scalar) const;
+  Vector3d &operator*=(const T &scalar);
 
   //! Same as multiplication by 1/scalar, maybe more accurate but also slower
-  const vector3d operator/(const T &scalar) const;
-  vector3d &operator/=(const T &scalar);
+  const Vector3d operator/(const T &scalar) const;
+  Vector3d &operator/=(const T &scalar);
 
   //! Calculate the dot/inner/scalar product
-  const T operator*(const vector3d &other) const;
+  const T operator*(const Vector3d &other) const;
 
   //! Calculate the cross/outer/vector product
-  const vector3d operator%(const vector3d &other) const;
-  vector3d &operator%=(const vector3d &other);
+  const Vector3d operator%(const Vector3d &other) const;
+  Vector3d &operator%=(const Vector3d &other);
 
   // Auxiliary methods
 
@@ -84,86 +84,86 @@ public:
   const T getLen() const;
 
   //! Returns a vector with the same orientation, but with a length of 1
-  const vector3d getUnit() const;
+  const Vector3d getUnit() const;
 
   //! Interpolates *this between another vector, by a ratio
-  const vector3d getInterpolation(const vector3d &other, const T &ratio) const;
+  const Vector3d getInterpolation(const Vector3d &other, const T &ratio) const;
 
   //! Reflects *this according to a surface's normal
-  const vector3d getReflection(const vector3d &surfaceNormal) const;
+  const Vector3d getReflection(const Vector3d &surfaceNormal) const;
 
   //! Rotates *this about an origin, using Euler angles( X=pitch, Y=yaw, Z=roll)
-  const vector3d getRotationEuler(const vector3d &angles,
-                                  const vector3d &origin = vector3d(), bool degs = true, bool ccw = true) const;
+  const Vector3d getRotationEuler(const Vector3d &angles,
+                                  const Vector3d &origin = Vector3d(), bool degs = true, bool ccw = true) const;
 
   //! Rotates *this about an origin, using an arbitrary axis( axis should be a unit vector )
-  const vector3d getRotationArbAxis(const vector3d &axis, const T &amount,
-                                    const vector3d &origin = vector3d(), bool degs = true, bool ccw = true) const;
+  const Vector3d getRotationArbAxis(const Vector3d &axis, const T &amount,
+                                    const Vector3d &origin = Vector3d(), bool degs = true, bool ccw = true) const;
 };
 
 template <typename T>
-inline vector3d<T>::vector3d()
+inline Vector3d<T>::Vector3d()
     : X(0), Y(0), Z(0)
 {
 }
 
 template <typename T>
 template <typename R>
-inline vector3d<T>::vector3d(const vector3d<R> &other)
+inline Vector3d<T>::Vector3d(const Vector3d<R> &other)
     : X(other.X), Y(other.Y), Z(other.Z)
 {
 }
 
 template <typename T>
-inline vector3d<T>::vector3d(const T &x, const T &y, const T &z)
+inline Vector3d<T>::Vector3d(const T &x, const T &y, const T &z)
     : X(x), Y(y), Z(z)
 {
 }
 
 template <typename T>
-inline vector3d<T>::vector3d(const T coords[3])
+inline Vector3d<T>::Vector3d(const T coords[3])
     : X(coords[0]), Y(coords[1]), Z(coords[2])
 {
 }
 
 template <typename T>
-inline const T &vector3d<T>::getX() const
+inline const T &Vector3d<T>::getX() const
 {
   return X;
 }
 
 template <typename T>
-inline void vector3d<T>::setX(const T &newX)
+inline void Vector3d<T>::setX(const T &newX)
 {
   X = newX;
 }
 
 template <typename T>
-inline const T &vector3d<T>::getY() const
+inline const T &Vector3d<T>::getY() const
 {
   return Y;
 }
 
 template <typename T>
-inline void vector3d<T>::setY(const T &newY)
+inline void Vector3d<T>::setY(const T &newY)
 {
   Y = newY;
 }
 
 template <typename T>
-inline const T &vector3d<T>::getZ() const
+inline const T &Vector3d<T>::getZ() const
 {
   return Z;
 }
 
 template <typename T>
-inline void vector3d<T>::setZ(const T &newZ)
+inline void Vector3d<T>::setZ(const T &newZ)
 {
   Z = newZ;
 }
 
 template <typename T>
-inline void vector3d<T>::getv(T buffer[3]) const
+inline void Vector3d<T>::getv(T buffer[3]) const
 {
   buffer[0] = X;
   buffer[1] = Y;
@@ -171,7 +171,7 @@ inline void vector3d<T>::getv(T buffer[3]) const
 }
 
 template <typename T>
-inline void vector3d<T>::setv(const T coords[3])
+inline void Vector3d<T>::setv(const T coords[3])
 {
   X = coords[0];
   Y = coords[1];
@@ -179,7 +179,7 @@ inline void vector3d<T>::setv(const T coords[3])
 }
 
 template <typename T>
-inline void vector3d<T>::get(T &x, T &y, T &z) const
+inline void Vector3d<T>::get(T &x, T &y, T &z) const
 {
   x = X;
   y = Y;
@@ -187,7 +187,7 @@ inline void vector3d<T>::get(T &x, T &y, T &z) const
 }
 
 template <typename T>
-inline void vector3d<T>::set(const T &x, const T &y, const T &z)
+inline void Vector3d<T>::set(const T &x, const T &y, const T &z)
 {
   X = x;
   Y = y;
@@ -195,7 +195,7 @@ inline void vector3d<T>::set(const T &x, const T &y, const T &z)
 }
 
 template <typename T>
-inline const T &vector3d<T>::operator[](size_t index) const
+inline const T &Vector3d<T>::operator[](size_t index) const
 {
   switch (index)
   {
@@ -211,7 +211,7 @@ inline const T &vector3d<T>::operator[](size_t index) const
 }
 
 template <typename T>
-inline T &vector3d<T>::operator[](size_t index)
+inline T &Vector3d<T>::operator[](size_t index)
 {
   switch (index)
   {
@@ -227,7 +227,7 @@ inline T &vector3d<T>::operator[](size_t index)
 }
 
 template <typename T>
-inline const T &vector3d<T>::operator()(size_t column) const
+inline const T &Vector3d<T>::operator()(size_t column) const
 {
   switch (column)
   {
@@ -243,7 +243,7 @@ inline const T &vector3d<T>::operator()(size_t column) const
 }
 
 template <typename T>
-inline T &vector3d<T>::operator()(size_t column)
+inline T &Vector3d<T>::operator()(size_t column)
 {
   switch (column)
   {
@@ -259,99 +259,99 @@ inline T &vector3d<T>::operator()(size_t column)
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator+() const
+inline const Vector3d<T> Vector3d<T>::operator+() const
 {
   return *this;
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator+(const vector3d &other) const
+inline const Vector3d<T> Vector3d<T>::operator+(const Vector3d &other) const
 {
-  return vector3d(X + other.X, Y + other.Y, Z + other.Z);
+  return Vector3d(X + other.X, Y + other.Y, Z + other.Z);
 }
 
 template <typename T>
-inline vector3d<T> &vector3d<T>::operator+=(const vector3d &other)
+inline Vector3d<T> &Vector3d<T>::operator+=(const Vector3d &other)
 {
   return *this = *this + other;
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator-() const
+inline const Vector3d<T> Vector3d<T>::operator-() const
 {
-  return vector3d(-X, -Y, -Z);
+  return Vector3d(-X, -Y, -Z);
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator-(const vector3d &other) const
+inline const Vector3d<T> Vector3d<T>::operator-(const Vector3d &other) const
 {
-  return vector3d(X - other.X, Y - other.Y, Z - other.Z);
+  return Vector3d(X - other.X, Y - other.Y, Z - other.Z);
 }
 
 template <typename T>
-inline vector3d<T> &vector3d<T>::operator-=(const vector3d &other)
+inline Vector3d<T> &Vector3d<T>::operator-=(const Vector3d &other)
 {
   return *this = *this - other;
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator*(const T &scalar) const
+inline const Vector3d<T> Vector3d<T>::operator*(const T &scalar) const
 {
-  return vector3d(X * scalar, Y * scalar, Z * scalar);
+  return Vector3d(X * scalar, Y * scalar, Z * scalar);
 }
 
 template <typename T>
-inline vector3d<T> &vector3d<T>::operator*=(const T &scalar)
+inline Vector3d<T> &Vector3d<T>::operator*=(const T &scalar)
 {
   return *this = *this * scalar;
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator/(const T &scalar) const
+inline const Vector3d<T> Vector3d<T>::operator/(const T &scalar) const
 {
-  return vector3d(X / scalar, Y / scalar, Z / scalar);
+  return Vector3d(X / scalar, Y / scalar, Z / scalar);
 }
 
 template <typename T>
-inline vector3d<T> &vector3d<T>::operator/=(const T &scalar)
+inline Vector3d<T> &Vector3d<T>::operator/=(const T &scalar)
 {
   return *this = *this / scalar;
 }
 
 template <typename T>
-inline const T vector3d<T>::operator*(const vector3d &other) const
+inline const T Vector3d<T>::operator*(const Vector3d &other) const
 {
   return X * other.X + Y * other.Y + Z * other.Z;
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::operator%(const vector3d &other) const
+inline const Vector3d<T> Vector3d<T>::operator%(const Vector3d &other) const
 {
-  return vector3d(Y * other.Z - Z * other.Y,
+  return Vector3d(Y * other.Z - Z * other.Y,
                   Z * other.X - X * other.Z,
                   X * other.Y - Y * other.X);
 }
 
 template <typename T>
-inline vector3d<T> &vector3d<T>::operator%=(const vector3d &other)
+inline Vector3d<T> &Vector3d<T>::operator%=(const Vector3d &other)
 {
   return *this = *this % other;
 }
 
 template <typename T>
-inline const T vector3d<T>::getSqrLen() const
+inline const T Vector3d<T>::getSqrLen() const
 {
   return X * X + Y * Y + Z * Z;
 }
 
 template <typename T>
-inline const T vector3d<T>::getLen() const
+inline const T Vector3d<T>::getLen() const
 {
   return std::sqrt(getSqrLen());
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::getUnit() const
+inline const Vector3d<T> Vector3d<T>::getUnit() const
 {
   if (getSqrLen() != 0)
     return *this / getLen();
@@ -360,20 +360,20 @@ inline const vector3d<T> vector3d<T>::getUnit() const
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::getInterpolation(const vector3d &other, const T &ratio) const
+inline const Vector3d<T> Vector3d<T>::getInterpolation(const Vector3d &other, const T &ratio) const
 {
   return *this + (other - *this) * ratio;
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::getReflection(const vector3d &surfaceNormal) const
+inline const Vector3d<T> Vector3d<T>::getReflection(const Vector3d &surfaceNormal) const
 {
   return *this - surfaceNormal * ((*this * surfaceNormal) * 2);
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::
-    getRotationEuler(const vector3d &angles, const vector3d &origin, bool degs, bool ccw) const
+inline const Vector3d<T> Vector3d<T>::
+    getRotationEuler(const Vector3d &angles, const Vector3d &origin, bool degs, bool ccw) const
 {
   T sin_phi, sin_theta, sin_psi;
   T cos_phi, cos_theta, cos_psi;
@@ -408,8 +408,8 @@ inline const vector3d<T> vector3d<T>::
     sin_psi = -sin_psi;
   }
 
-  vector3d temp = *this - origin;
-  vector3d result = temp;
+  Vector3d temp = *this - origin;
+  Vector3d result = temp;
 
   result.setY(temp.getY() * cos_phi + temp.getZ() * sin_phi);
   result.setZ(-temp.getY() * sin_phi + temp.getZ() * cos_phi);
@@ -428,8 +428,8 @@ inline const vector3d<T> vector3d<T>::
 }
 
 template <typename T>
-inline const vector3d<T> vector3d<T>::
-    getRotationArbAxis(const vector3d &axis, const T &amount, const vector3d &origin, bool degs, bool ccw) const
+inline const Vector3d<T> Vector3d<T>::
+    getRotationArbAxis(const Vector3d &axis, const T &amount, const Vector3d &origin, bool degs, bool ccw) const
 {
   T cos_theta, sin_theta;
 
