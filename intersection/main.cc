@@ -86,7 +86,6 @@ void TestLineAndTriangleRandomRepeat(const size_t &count = 1)
   }
 }
 
-
 void TestLineAndLineSegment2D()
 {
 
@@ -96,7 +95,8 @@ void TestLineAndLineSegment2D()
   std::vector<std::array<Vec2, 2>> line_segment_true = {{Vec2{-1, 0}, Vec2{4, 3}},
                                                         {Vec2{0, 0}, Vec2{4, 3}},
                                                         {Vec2{0.0003, 0.0002}, Vec2{0.0002, 0.0003}},
-                                                        {Vec2{10002, 9999}, Vec2{-1, 1}}};
+                                                        {Vec2{10002, 9999}, Vec2{-1, 1}},
+                                                        {Vec2{0, 0}, Vec2{-1, 0}}};
 
   std::vector<std::array<Vec2, 2>> line_segment_false = {{Vec2{-1, 0}, Vec2{2, 3}},
                                                          {Vec2{0.0001, 0}, Vec2{0.0002, 0}},
@@ -120,6 +120,6 @@ void TestLineAndLineSegment2D()
 int main()
 {
   /*/ TestLineAndLineSegment2D(); //*/
-  /**/ TestLineAndTriangleRandomRepeat(10); //*/
-  /*/ TestLineAndTriangle();               //*/
+  /*/ TestLineAndTriangleRandomRepeat(10); //*/
+  /**/ TestLineAndTriangle();               //*/
 }

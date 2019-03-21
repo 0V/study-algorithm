@@ -5,15 +5,13 @@
 
 bool IsIntersectedLineAndLineSegment2D(const std::array<Vec2, 2> &line, const std::array<Vec2, 2> &line_segment)
 {
-  double diffx = line[1].x - line[0].x;
-  double diffy = line[1].y - line[0].y;
-  double a = diffy / diffx;
-  double b = line[0].y - a * line[0].x;
+  Vec2 axis = line[1] - line[0];
+  Vec2 seg0_dir = line[1] - line_segment[0];
+  Vec2 seg1_dir = line[1] - line_segment[1];
+  double seg0_z = axis.cross(seg0_dir); 
+  double seg1_z = axis.cross(seg1_dir);  
 
-  double pointA = a * line_segment[0].x + b - line_segment[0].y;
-  double pointB = a * line_segment[1].x + b - line_segment[1].y;
-
-  return pointA * pointB <= 0;
+  return seg0_z * seg1_z <= 0;
 }
 
 bool IsIntersectedLineSegment2D(const std::array<Vec2, 2> &line_segment_first, const std::array<Vec2, 2> &line_segment_second)
