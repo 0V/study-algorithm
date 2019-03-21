@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <array>
-#include "vec2.h"
+#include "vector2d.h"
 
 bool IsIntersectedLineAndLineSegment2D(const std::array<Vec2, 2> &line, const std::array<Vec2, 2> &line_segment)
 {
@@ -15,7 +15,6 @@ bool IsIntersectedLineAndLineSegment2D(const std::array<Vec2, 2> &line, const st
 }
 
 bool IsIntersectedLineSegment2D(const std::array<Vec2, 2> &line_segment_first, const std::array<Vec2, 2> &line_segment_second)
-
 {
   return IsIntersectedLineAndLineSegment2D(line_segment_first, line_segment_second) &&
          IsIntersectedLineAndLineSegment2D(line_segment_second, line_segment_first);

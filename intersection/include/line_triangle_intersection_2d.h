@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <array>
-#include "vec2.h"
+#include "vector2d.h"
 
 // line := (x1, y1) (x2, y2)
 // triangle := (x1, y1) (x2, y2) (x3, y3)

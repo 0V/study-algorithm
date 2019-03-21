@@ -4,7 +4,7 @@
 #include <fstream>
 #include <random>
 #include "intersections.h"
-#include "vec2.h"
+#include "vector2d.h"
 
 void TestLineAndTriangle()
 {
@@ -119,7 +119,7 @@ void TestLineAndLineSegment2D()
 
 int main()
 {
-  /*/ TestLineAndLineSegment2D(); //*/
+  /**/ TestLineAndLineSegment2D(); //*/
   /*/ TestLineAndTriangleRandomRepeat(10); //*/
-  /**/ TestLineAndTriangle();               //*/
+  /*/ TestLineAndTriangle();               //*/
 }
