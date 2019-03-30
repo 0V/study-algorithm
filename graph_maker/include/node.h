@@ -4,7 +4,7 @@
 struct Node
 {
   int id;
-  Vec2 p;
+  vec2 p;
 };
 
 template <typename Char>

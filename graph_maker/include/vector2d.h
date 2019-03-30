@@ -128,4 +128,4 @@ inline std::basic_istream<Char> &operator>>(std::basic_istream<Char> &is, Vector
   return is >> unused >> v.x >> unused >> v.y >> unused;
 }
 
-using Vec2 = Vector2d<double>;
+using vec2 = Vector2d<double>;

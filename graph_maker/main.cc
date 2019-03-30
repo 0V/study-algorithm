@@ -9,7 +9,7 @@
 
 void CreateGraph()
 {
-  constexpr int NodeSize = 3;
+  constexpr int NodeSize = 10;
   std::array<Node, NodeSize> nodes;
 
   std::cout << "Definition\n"
@@ -22,11 +22,11 @@ void CreateGraph()
     std::cin >> nodes[i].p.y;
   }
 
-  Graph<NodeSize> graph(nodes);
+  Graph<NodeSize> graph(nodes, 30);
 
-  for (auto &node : graph.to_pairs())
+  for (auto &idxs : graph.to_pairs())
   {
-    std::cout << node[0] << " " << node[1] << std::endl;
+    std::cout << nodes[idxs[0]] << " " << nodes[idxs[1]] << std::endl;
   }
 }
 
