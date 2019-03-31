@@ -82,11 +82,24 @@ public:
     std::cout << "I = " << 2 * sum / N << std::endl;
     std::cout << "True = 2.6666..." << std::endl;
   }
+
+  void importance_sampling_xyz()
+  {
+    for (size_t i = 0; i < 200; i++)
+    {
+      double r1 = sampler01.sample();
+      double r2 = sampler01.sample();
+      double x = std::cos(2 * M_PI * r1) * 2 * std::sqrt(r2 * (1 - r2));
+      double y = std::sin(2 * M_PI * r1) * 2 * std::sqrt(r2 * (1 - r2));
+      double z = 1 - 2 * r2;
+      std::cout << x << " " << y << " " << z << "\n";
+    }
+  }
 };
 
 int main()
 {
   MCTester tester;
   //  tester.regular_pi();
-  tester.integral_x_pow_2();
+  tester.importance_sampling_xyz();
 }
