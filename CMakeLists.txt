@@ -6,7 +6,7 @@ project(study_algorithm)
 set(CMAKE_BUILD_TYPE Debug)
 
 # All directories
-set(PROJECT_DIRS inverse_sampling;sort;intersection;montecarlo;graph_maker)
+set(PROJECT_DIRS inverse_sampling;sort;intersection;montecarlo;graph_maker;random_walk)
 
 set(CMAKE_CXX_FLAGS "-Wall -pedantic -std=c++17")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
